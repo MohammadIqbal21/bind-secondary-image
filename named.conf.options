@@ -1,0 +1,16 @@
+include "/etc/bind/transfer.key";
+acl lab-net { 192.168.52.0/24; };
+
+acl bogon-nets {
+   0.0.0.0/8; 10.0.0.0/8; 127.0.0.0/8; 169.254.0.0/16;
+   172.16.0.0/12; 192.0.2.0/24; 224.0.0.0/4; 240.0.0.0/4;
+};
+
+options {
+    directory "/var/cache/bind";
+    recursion no;
+    allow-query { lab-net; };
+    version "not disclosed";
+    dnssec-validation no;
+    blackhole { bogon-nets; };
+};
