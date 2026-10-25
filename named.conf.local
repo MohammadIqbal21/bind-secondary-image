@@ -1,0 +1,9 @@
+zone "lab.miqbal37.300.ops" {
+    type slave;
+    file "/var/cache/bind/db.lab.miqbal37.300.ops";
+    masters { 192.168.52.10; };
+};
+
+server 192.168.52.10 {
+    keys transfer-key;
+};
